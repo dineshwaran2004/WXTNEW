@@ -49,7 +49,7 @@
 .hero-left h1 {
   font-size: 72px;
   line-height: 1.05;
-  color: #1D2D89 ;
+  color: #1D2D89;
   font-family: "Phudu", sans-serif;
   font-weight: 500;
   transition: color 0.3s ease;
@@ -251,7 +251,7 @@
   /* --- Headline: fluid size, never overflows --- */
   /* INCREASE TITLE SIZE */
 .hero-left h1 {
-  font-size: clamp(45px, 25vw, 72px);  /* was clamp(28px, 7.5vw, 42px) */
+  font-size: clamp(45px, 19vw, 39px);  /* was clamp(28px, 7.5vw, 42px) */
   line-height: 1.2;
   word-break: break-word;
   hyphens: auto;
@@ -262,7 +262,7 @@
     font-size: 15px;
     line-height: 1.75;
     margin-top: 18px;
-    max-width: 520px;
+    max-width: 500px;
   }
 
   /* --- Stats row --- */
