@@ -13,16 +13,15 @@
   --card-shadow: rgba(15, 23, 42, 0.04);
 }
 
-/* ── APPLIES STYLES ONLY IF THE WRAPPER HAS THE DARK THEME CLASS ── */
 .classic-tech-section.dark-theme {
-  --bg-main: #0b0f19;          /* Luxury Dark Slate background */
-  --text-main: #f8fafc;          /* High Contrast Bright Text */
-  --text-muted: #94a3b8;        /* Soft Gray Description Labels */
-  --border-card: #1e293b;       /* Dark Structural Boundaries */
-  --border-hover: #334155;      /* Slate Hover Boundaries */
-  --bg-tab-active: #1e293b;     /* Selected Navigation Tab background */
-  --bg-icon-base: #131b2e;      /* Inner Circular Icon Container Wells */
-  --blue-primary: #3b82f6;      /* Vibrant Electric Blue Accents */
+  --bg-main: #0b0f19;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-card: #1e293b;
+  --border-hover: #334155;
+  --bg-tab-active: #1e293b;
+  --bg-icon-base: #131b2e;
+  --blue-primary: #3b82f6;
   --card-shadow: rgba(0, 0, 0, 0.45);
 }
 
@@ -71,6 +70,7 @@
   cursor: pointer;
   border-radius: 6px;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .filter-tab-btn:hover {
@@ -121,7 +121,6 @@
   object-fit: contain;
 }
 
-/* Inverts dark-on-dark icons cleanly under dark mode wrapper context */
 .classic-tech-section.dark-theme .theme-invert-target .classic-tool-img {
   filter: brightness(0) invert(1);
 }
@@ -147,7 +146,6 @@
   line-height: 1.45;
 }
 
-/* Global Dynamic Hover Mechanics */
 .classic-tool-card:hover {
   transform: translateY(-2px);
   border-color: var(--border-hover);
@@ -204,28 +202,175 @@
   margin: 0;
 }
 
-/* Responsive Structural Modifiers */
+.tool-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* ============================================
+   TABLET  (≤ 1100px)
+   ============================================ */
 @media (max-width: 1100px) {
   .classic-tech-container {
     flex-direction: column-reverse;
     gap: 48px;
     padding: 0 24px;
   }
+
   .classic-branding-side {
     width: 100%;
   }
+
   .sticky-brand-content {
     text-align: center;
     align-items: center;
     position: static;
   }
+
   .classic-side-text {
     max-width: 520px;
   }
 }
-/* Add this to your stylesheet */
-.tool-icon {
-  width: 24px;   /* Or your preferred size */
-  height: 24px;
-  display: block;
+
+/* ============================================
+   MOBILE  (≤ 768px)
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* Section padding */
+  .classic-tech-section {
+    padding: 60px 0;
+  }
+
+  .classic-tech-container {
+    flex-direction: column-reverse;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  /* ── Branding / Title block ── */
+  .classic-branding-side {
+    width: 100%;
+  }
+
+  .sticky-brand-content {
+    position: static;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* FIX: fluid title that never overflows */
+  .classic-main-title {
+    font-size: clamp(32px, 9vw, 48px);
+    letter-spacing: -1px;
+    line-height: 1.05;
+    word-break: break-word;
+    margin-bottom: 16px;
+  }
+
+  .classic-accent-line {
+    margin-bottom: 16px;
+  }
+
+  .classic-side-text {
+    font-size: 14px;
+    max-width: 100%;
+    line-height: 1.65;
+  }
+
+  /* ── Grid side ── */
+  .classic-grid-side {
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* FIX: Filter tabs — horizontal scroll, no overflow clipping */
+  .classic-filter-tabs {
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;          /* Firefox */
+    padding-bottom: 12px;
+    gap: 6px;
+    /* Don't clip the last tab */
+    padding-right: 16px;
+  }
+
+  .classic-filter-tabs::-webkit-scrollbar {
+    display: none;                  /* Chrome/Safari */
+  }
+
+  .filter-tab-btn {
+    flex-shrink: 0;                 /* prevent tabs from squishing */
+    font-size: 13px;
+    padding: 7px 14px;
+  }
+
+  /* FIX: Cards — single column, compact, no overflowing right edge */
+  .classic-tools-grid {
+    grid-template-columns: 1fr;     /* single column */
+    gap: 10px;
+  }
+
+  .classic-tool-card {
+    padding: 16px;
+    gap: 14px;
+    border-radius: 10px;
+    /* Ensure card doesn't exceed container */
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .classic-icon-wrapper {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+  }
+
+  .classic-tool-img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .classic-tool-name {
+    font-size: 15px;
+  }
+
+  .classic-tool-description {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+}
+
+/* ============================================
+   VERY SMALL PHONES  (≤ 390px)
+   ============================================ */
+@media (max-width: 390px) {
+  .classic-tech-section {
+    padding: 48px 0;
+  }
+
+  .classic-tech-container {
+    padding: 0 14px;
+  }
+
+  .classic-main-title {
+    font-size: clamp(28px, 8vw, 38px);
+  }
+
+  .classic-tool-card {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .classic-icon-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .classic-tool-img {
+    width: 22px;
+    height: 22px;
+  }
 }
